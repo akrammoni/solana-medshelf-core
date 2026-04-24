@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  med-shelf-gateway:
+    image: akram/med-shelf-node:latest
+    environment:
+      - HELIUS_RPC_URL=${HELIUS_RPC_URL}
+      - HOSPITAL_ID=${HOSPITAL_ID}
+    ports:
+      - "8080:8080"
+    restart: always
+  local-db:
+    image: postgres:15
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
